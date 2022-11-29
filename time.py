@@ -15,6 +15,9 @@ sns.set_theme(style="whitegrid")
 
 def read_proc_time_data(keys,fi):
     data = pd.read_csv(fi)
+    #convert from ticks to seconds
+    data['time'] = data['time'].apply(lambda x: x/65536)
+
     #sort encrypt and setup by removing rows.
     setup = data[~data['type'].isin(['e'])]
     encrypt = data[~data['type'].isin(['s'])]
@@ -40,10 +43,10 @@ def plot_setup():
   
     setup = pd.concat([pets[0], lass[0], dips[0]], ignore_index=True)
     encrypt = pd.concat([pets[1], lass[1], dips[1]], ignore_index=True)
-  
+
     sns.lineplot(
         data=setup, x="number", y="time", hue="Protocol",
-        palette="YlGnBu_d", err_style="bars", errorbar=("se",2))
+        palette="YlGnBu_d", style='Protocol', markers=True, err_style="bars", errorbar=("se",2))
    
     plt.show()
 
@@ -69,7 +72,7 @@ def plot_encrypt():
   
     sns.lineplot(
         data=encrypt, x="number", y="time", hue="Protocol",
-        palette="YlGnBu_d", err_style="bars", errorbar=("se",2))
+        palette="YlGnBu_d", style='Protocol', markers=True, err_style="bars", errorbar=("se",2))
    
     plt.show()
 
