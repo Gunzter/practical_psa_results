@@ -23,12 +23,12 @@ def plot_prelim():
 
     pets  = read_proc_time_data(keys, 'processing_time/pets-psa-dummy.txt')
     #Add column with Protocolcol name
-    pets[0]['Protocol'] = 'Pets-PSA'
-    pets[1]['Protocol'] = 'Pets-PSA'
+    pets[0]['Protocol'] = 'KH-PRF-PSA'
+    pets[1]['Protocol'] = 'KH-PRF-PSA'
     lass = read_proc_time_data(keys, 'processing_time/lass-dummy.txt')
     #Add column with protocol name
-    lass[0]['Protocol'] = 'LaSS'
-    lass[1]['Protocol'] = 'LaSS'
+    lass[0]['Protocol'] = 'LaSS-PSA'
+    lass[1]['Protocol'] = 'LaSS-PSA'
   
     #Create one big dataframe each for encrypt and setup
     setup = pd.concat([pets[0], lass[0]], ignore_index=True)
@@ -63,12 +63,12 @@ def plot_all():
 
     pets  = read_proc_time_data(keys, 'processing_time/pets-psa-dummy.txt')
     #Add column with Protocolcol name
-    pets[0]['Protocol'] = 'Pets-PSA'
-    pets[1]['Protocol'] = 'Pets-PSA'
+    pets[0]['Protocol'] = 'KH-PRF-PSA'
+    pets[1]['Protocol'] = 'KH-PRF-PSA'
     lass = read_proc_time_data(keys, 'processing_time/lass-dummy.txt')
     #Add column with protocol name
-    lass[0]['Protocol'] = 'LaSS'
-    lass[1]['Protocol'] = 'LaSS'
+    lass[0]['Protocol'] = 'LaSS-PSA'
+    lass[1]['Protocol'] = 'LaSS-PSA'
     dips = read_proc_time_data(keys,'processing_time/dipsauce-dummy.txt')
     #Add column with Protocolcol name
     dips[0]['Protocol'] = 'DIPSAUCE'
