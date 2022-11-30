@@ -1,11 +1,4 @@
-from scipy import stats
-import numpy as np
 from matplotlib import pyplot as plt
-import statsmodels.api as sm
-import pylab
-import pandas as pd
-from termcolor import colored
-import csv
 import pandas as pd
 import seaborn as sns
 
