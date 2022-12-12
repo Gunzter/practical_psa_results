@@ -94,9 +94,9 @@ def plot_all():
         palette="YlGnBu_d", style='Protocol', markers=True, err_style="bars", errorbar=("se",2))
     # Set x and y labels
     plot.set(xlabel ="Number of Users", ylabel = "Execution Time (s)", title ='Encrypt')
-    plt.show()
     plot.set_xticks(keys)
     plot.set_xticklabels([str(x) for x in keys])
+    plt.show()
 
 plot_prelim() 
 plot_all()
