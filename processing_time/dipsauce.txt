@@ -1,3 +1,4 @@
+type,iteration,number,time,retransmissions
 s,0,1024, 876628, 0
 e,0,1024, 212, 0
 s,1,1024, 864650, 0
