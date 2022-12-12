@@ -21,11 +21,11 @@ def plot_prelim():
 
     keys = [1024,2025,3025,4096,5041,6084,7056,8100,9025,10000]
 
-    pets  = read_proc_time_data(keys, 'processing_time/pets-psa-dummy.txt')
+    pets  = read_proc_time_data(keys, 'processing_time/pets-psa.txt')
     #Add column with Protocolcol name
     pets[0]['Protocol'] = 'KH-PRF-PSA'
     pets[1]['Protocol'] = 'KH-PRF-PSA'
-    lass = read_proc_time_data(keys, 'processing_time/lass-dummy.txt')
+    lass = read_proc_time_data(keys, 'processing_time/lass.txt')
     #Add column with protocol name
     lass[0]['Protocol'] = 'LaSS-PSA'
     lass[1]['Protocol'] = 'LaSS-PSA'
@@ -61,15 +61,15 @@ def plot_all():
 
     keys = [1024,2025,3025,4096,5041,6084,7056,8100,9025,10000]
 
-    pets  = read_proc_time_data(keys, 'processing_time/pets-psa-dummy.txt')
+    pets  = read_proc_time_data(keys, 'processing_time/pets-psa.txt')
     #Add column with Protocolcol name
     pets[0]['Protocol'] = 'KH-PRF-PSA'
     pets[1]['Protocol'] = 'KH-PRF-PSA'
-    lass = read_proc_time_data(keys, 'processing_time/lass-dummy.txt')
+    lass = read_proc_time_data(keys, 'processing_time/lass.txt')
     #Add column with protocol name
     lass[0]['Protocol'] = 'LaSS-PSA'
     lass[1]['Protocol'] = 'LaSS-PSA'
-    dips = read_proc_time_data(keys,'processing_time/dipsauce-dummy.txt')
+    dips = read_proc_time_data(keys,'processing_time/dipsauce.txt')
     #Add column with Protocolcol name
     dips[0]['Protocol'] = 'DIPSAUCE'
     dips[1]['Protocol'] = 'DIPSAUCE'
