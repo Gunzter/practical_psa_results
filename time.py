@@ -1,6 +1,7 @@
 from matplotlib import pyplot as plt
 import pandas as pd
 import seaborn as sns
+import statsmodels.api as sm
 
 sns.set_theme(style="whitegrid")
 
@@ -56,6 +57,33 @@ def plot_prelim():
     plot.set_xticklabels([str(x) for x in keys])
     plt.show()
 
+def model_fit(df_tuple, protocol):
+    setup = df_tuple[0]
+    enc = df_tuple[1]
+    
+    X = setup["number"]
+    y = setup["time"]
+    X = sm.add_constant(X) # add y-intercept to our
+
+    # Note the difference in argument order
+    model = sm.OLS(y, X).fit()
+    predictions = model.predict(X) # make the predictions by the model
+
+    # Print out the statistics
+    print("=== {} Setup ===".format(protocol))
+    print(model.summary())
+
+    X = enc["number"]
+    y = enc["time"]
+    X = sm.add_constant(X) # add y-intercept to our
+
+    # Note the difference in argument order
+    model = sm.OLS(y, X).fit()
+    predictions = model.predict(X) # make the predictions by the model
+
+    # Print out the statistics
+    print("=== {} Encrypt ===".format(protocol))
+    print(model.summary())
 
 def plot_all():
 
@@ -73,7 +101,10 @@ def plot_all():
     #Add column with Protocolcol name
     dips[0]['Protocol'] = 'DIPSAUCE'
     dips[1]['Protocol'] = 'DIPSAUCE'
-  
+    model_fit(pets, "KH-PRF-PSA") 
+    model_fit(lass, "LaSS-PSA") 
+    model_fit(dips, "DIPSAUCE") 
+
     setup = pd.concat([pets[0], lass[0], dips[0]], ignore_index=True)
     encrypt = pd.concat([pets[1], lass[1], dips[1]], ignore_index=True)
   
@@ -98,6 +129,6 @@ def plot_all():
     plot.set_xticklabels([str(x) for x in keys])
     plt.show()
 
-plot_prelim() 
+#plot_prelim() 
 plot_all()
 
