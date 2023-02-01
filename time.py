@@ -85,6 +85,20 @@ def model_fit(df_tuple, protocol):
     print("=== {} Encrypt ===".format(protocol))
     print(model.summary())
 
+def print_values(df_tuple, protocol):
+    setup = df_tuple[0]
+    enc = df_tuple[1]
+    
+    print("=== {} Setup ===".format(protocol))
+    n1024 = setup.loc[setup["number"] == 1024]["time"].mean()
+    n10000 = setup.loc[setup["number"] == 10000]["time"].mean()
+    print("1024: {} 10000: {}".format(n1024, n10000))
+    
+    print("=== {} Encrypt ===".format(protocol))
+    n1024 = enc.loc[enc["number"] == 1024]["time"].mean()
+    n10000 = enc.loc[enc["number"] == 10000]["time"].mean()
+    print("1024: {} 10000: {}".format(n1024, n10000))
+
 def plot_all():
 
     keys = [1024,2025,3025,4096,5041,6084,7056,8100,9025,10000]
@@ -104,6 +118,9 @@ def plot_all():
     model_fit(pets, "KH-PRF-PSA") 
     model_fit(lass, "LaSS-PSA") 
     model_fit(dips, "DIPSAUCE") 
+    print_values(pets, "KH-PRF-PSA")
+    print_values(lass, "LaSS-PSA") 
+    print_values(dips, "DIPSAUCE") 
 
     setup = pd.concat([pets[0], lass[0], dips[0]], ignore_index=True)
     encrypt = pd.concat([pets[1], lass[1], dips[1]], ignore_index=True)
