@@ -24,12 +24,12 @@ def plot_prelim():
 
     pets  = read_proc_time_data(keys, 'processing_time/pets-psa.txt')
     #Add column with Protocolcol name
-    pets[0]['Protocol'] = 'KH-PRF-PSA'
-    pets[1]['Protocol'] = 'KH-PRF-PSA'
+    pets[0]['Procedure'] = 'KH-PRF-PSA.Setup'
+    pets[1]['Procedure'] = 'KH-PRF-PSA.Encrypt'
     lass = read_proc_time_data(keys, 'processing_time/lass.txt')
     #Add column with protocol name
-    lass[0]['Protocol'] = 'LaSS-PSA'
-    lass[1]['Protocol'] = 'LaSS-PSA'
+    lass[0]['Procedure'] = 'LaSS-PSA.Setup'
+    lass[1]['Procedure'] = 'LaSS-PSA.Encrypt'
   
     #Create one big dataframe each for encrypt and setup
     setup = pd.concat([pets[0], lass[0]], ignore_index=True)
@@ -37,11 +37,11 @@ def plot_prelim():
 
     #Plot graph for setup
     plot = sns.lineplot(
-        data=setup, x="number", y="time", hue="Protocol",
-        palette="YlGnBu_d", style='Protocol', markers=True, err_style="bars", errorbar=("se",2))
+        data=setup, x="number", y="time", hue="Procedure",
+        palette="YlGnBu_d", style='Procedure', markers=True, err_style="bars", errorbar=("se",2))
 
     #Set x and y labels 
-    plot.set(xlabel ="Number of Users", ylabel = "Execution Time (s)", title ='Setup')
+    plot.set(xlabel ="Number of Users", ylabel = "Execution Time (s)")
     plot.set_xticks(keys)
     plot.set_xticklabels([str(x) for x in keys])
 
@@ -49,10 +49,10 @@ def plot_prelim():
 
     #Plot graph for encrypt
     plot = sns.lineplot(
-        data=encrypt, x="number", y="time", hue="Protocol",
-        palette="YlGnBu_d", style='Protocol', markers=True, err_style="bars", errorbar=("se",2))
+        data=encrypt, x="number", y="time", hue="Procedure",
+        palette="YlGnBu_d", style='Procedure', markers=True, err_style="bars", errorbar=("se",2))
     # Set x and y labels
-    plot.set(xlabel ="Number of Users", ylabel = "Execution Time (s)", title ='Encrypt')
+    plot.set(xlabel ="Number of Users", ylabel = "Execution Time (s)")
     plot.set_xticks(keys)
     plot.set_xticklabels([str(x) for x in keys])
     plt.show()
@@ -104,17 +104,17 @@ def plot_all():
     keys = [1024,2025,3025,4096,5041,6084,7056,8100,9025,10000]
 
     pets  = read_proc_time_data(keys, 'processing_time/pets-psa.txt')
-    #Add column with Protocolcol name
-    pets[0]['Protocol'] = 'KH-PRF-PSA'
-    pets[1]['Protocol'] = 'KH-PRF-PSA'
+    #Add column with Procedurecol name
+    pets[0]['Procedure'] = 'KH-PRF-PSA.Setup'
+    pets[1]['Procedure'] = 'KH-PRF-PSA.Encrypt'
     lass = read_proc_time_data(keys, 'processing_time/lass.txt')
     #Add column with protocol name
-    lass[0]['Protocol'] = 'LaSS-PSA'
-    lass[1]['Protocol'] = 'LaSS-PSA'
+    lass[0]['Procedure'] = 'LaSS-PSA.Setup'
+    lass[1]['Procedure'] = 'LaSS-PSA.Encrypt'
     dips = read_proc_time_data(keys,'processing_time/dipsauce.txt')
-    #Add column with Protocolcol name
-    dips[0]['Protocol'] = 'DIPSAUCE'
-    dips[1]['Protocol'] = 'DIPSAUCE'
+    #Add column with Procedurecol name
+    dips[0]['Procedure'] = 'DIPSAUCE.Setup'
+    dips[1]['Procedure'] = 'DIPSAUCE.Encrypt'
     model_fit(pets, "KH-PRF-PSA") 
     model_fit(lass, "LaSS-PSA") 
     model_fit(dips, "DIPSAUCE") 
@@ -127,25 +127,25 @@ def plot_all():
   
     #Plot graph for setup
     plot = sns.lineplot(
-        data=setup, x="number", y="time", hue="Protocol",
-        palette="YlGnBu_d", style='Protocol', markers=True, err_style="bars", errorbar=("se",2))
+        data=setup, x="number", y="time", hue="Procedure",
+        palette="YlGnBu_d", style='Procedure', markers=True, err_style="bars", errorbar=("se",2))
 
     #Set x and y labels 
-    plot.set(xlabel ="Number of Users", ylabel = "Execution Time (s)", title ='Setup')
+    plot.set(xlabel ="Number of Users", ylabel = "Execution Time (s)")
     plot.set_xticks(keys)
     plot.set_xticklabels([str(x) for x in keys])
     plt.show()
 
     #Plot graph for encrypt
     plot = sns.lineplot(
-        data=encrypt, x="number", y="time", hue="Protocol",
-        palette="YlGnBu_d", style='Protocol', markers=True, err_style="bars", errorbar=("se",2))
+        data=encrypt, x="number", y="time", hue="Procedure",
+        palette="YlGnBu_d", style='Procedure', markers=True, err_style="bars", errorbar=("se",2))
     # Set x and y labels
-    plot.set(xlabel ="Number of Users", ylabel = "Execution Time (s)", title ='Encrypt')
+    plot.set(xlabel ="Number of Users", ylabel = "Execution Time (s)")
     plot.set_xticks(keys)
     plot.set_xticklabels([str(x) for x in keys])
     plt.show()
 
-#plot_prelim() 
+plot_prelim() 
 plot_all()
 
