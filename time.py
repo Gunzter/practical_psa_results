@@ -113,7 +113,7 @@ def plot_all():
     lass[1]['Procedure'] = 'LaSS-PSA.Encrypt'
     dips = read_proc_time_data(keys,'processing_time/dipsauce.txt')
     #Add column with Procedurecol name
-    dips[0]['Procedure'] = 'DIPSAUCE.Setup'
+    dips[0]['Procedure'] = 'DIPSAUCE.Setup+KeyGen'
     dips[1]['Procedure'] = 'DIPSAUCE.Encrypt'
     model_fit(pets, "KH-PRF-PSA") 
     model_fit(lass, "LaSS-PSA") 
